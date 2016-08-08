@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+
+<div class="list-group" id="api_main">
+
+   <!-- 业务列表 -->
+        <a href="javascript:;" class="list-group-item apiGather " data="operationCenter">A)BD业务列表</a>
+            <ul class="nav apiList none" name="A)BD业务列表" style="display: none;">
+            <!-- 解绑流程 -->
+            <li><a href="getMirrtalkInfoByImei" data="getMirrtalkInfoByImei" name="operationCenter"  target= "right"  >1) 解绑imei</a></li>
+	        <!--获取企业信息-->
+            <li><a href="getBusinessInfo"  data="getBusinessInfo" name="operationCenter" target= "right" >2) 企业信息查询</a></li>
+	        <!-- 企业注册账户 -->
+            <li><a href="businessRegisterInfo" data="businessRegisterInfo" name="operationCenter"  target= "right"  >3) 企业注册账户</a></li> 
+            <!-- 查询设备状态 -->
+            <!--li><a href="queryDeviceStatus"  data="queryDeviceStatus" name="MainDebug" target= "right" >4) 查询设备状态</a></li-->
+            <!-- 修复昵称 -->
+            <li><a href="repairNickname"  data="repairNickname" name="MainDebug" target= "right" >5) 修复昵称</a></li>
+        </ul>
+
+        <a href="javascript:;" class="list-group-item apiGather " data="channelManagement">B)频道管理</a>
+            <ul class="nav apiList none" name="B)频道管理" style="display: none;">
+            <!-- 频道转移 -->
+            <li><a href="transferSecretChannel" data="transferSecretChannel" name="channelManagement"  target= "right"  >1) 频道转移</a></li>
+            
+            <!-- 批量关注微频道-->
+            <li><a href="batchFollowMicroChannel" data="batchFollowMicroChannel" name="channelManagement" target= "right" >2) 批量关注微频道</a></li> 
+            <!-- 获取频道分类 -->
+            <li><a href="getChannelCatalog" data="getChannelCatalog" name="channelManagement" target= "right" >3) 获取频道分类</a></li> 
+            <!-- 增加频道分类 -->
+            <li><a href="addChannelCatalog" data="addChannelCatalog" name="channelManagement" target= "right" >4) 增加频道分类</a></li> 
+            <!-- 修改频道分类 -->
+            <li><a href="modifyChannelCatalog" data="modifyChannelCatalog" name="channelManagement" target= "right" >5) 修改频道分类</a></li> 
+            
+        
+	</ul>
+
+        <a href="javascript:;" class="list-group-item apiGather " data="accountManagement">C)账号管理</a>
+            <ul class="nav apiList none" name="C)账号管理" style="display: none;">
+            <!-- 注销用户 -->
+            <li><a href="cancellationAccount" data="cancellationAccount" name="accountManagement"  target= "right"  >1) 注销用户</a></li>
+        </ul>
+
+        <a href="javascript:;" class="list-group-item apiGather " data="customset">D)用户禁言设置</a>
+            <ul class="nav apiList none" name="D)用户禁言设置" style="display: none;">
+            
+            <!-- 设置用户禁言 -->
+            <li><a href="userShutUp" data="userShutUp" name="customset"  target= "right"  >1) 设置用户禁言</a></li>
+            <!-- 查询用户禁言 -->
+            <li><a href="fetchUserShutUpInfo" data="fetchUserShutUpInfo" name="customset"  target= "right"  >2) 查询用户禁言</a></li>
+        </ul>
+
+        <a href="javascript:;" class="list-group-item apiGather " data="customset">E)创建IMEI列表</a>
+            <ul class="nav apiList none" name="E)创建IMEI列表" style="display: none;">
+            
+            <!--获取企业信息-->
+            <li><a href="getBusinessInfo"  data="getBusinessInfo" name="MainDebug" target= "right" >1) 企业信息查询</a></li>
+            <!-- 企业注册账户 -->
+            <li><a href="businessRegisterInfo_IO" data="businessRegisterInfo_IO" name="operationCenter"  target= "right"  >2) 企业注册账户</a></li> 
+            <!-- 创建imei -->
+            <li><a href="quickCreateImei" data="quickCreateImei" name="operationCenter"  target= "right"  >3) 创建IMEI</a></li> 
+            <li><a href="getCustomArgs"  data="getCustomArgs" name="MainDebug" target= "right" >4) 查看参数设置</a></li>
+            <li><a href="userConfigInfo"  data="userConfigInfo" name="MainDebug" target= "right" >5) 开机参数设置</a></li>
+        </ul>
+
+<!--         <a href="javascript:;" class="list-group-item apiGather " data="customset">E)账户资金冻结</a>
+            <ul class="nav apiList none" name="E)账户资金冻结" style="display: none;">
+            <li><a href="getUserMoneyType"  data="getUserMoneyType" name="MainDebug" target= "right" >1) 查询用户资金类型</a></li>
+            账户资金冻结-->
+<!--             <li><a href="userMoneyFrozen"  data="userMoneyFrozen" name="MainDebug" target= "right" >2) 账户资金冻结</a></li>
+
+        </ul> -->
+
+       
+        <a href="javascript:;" class="list-group-item apiGather " data="weibo">F) 微博</a>
+            <ul class="nav apiList none" name="F) 微博" style="display: none;">
+                <li><a href="sendMultimediaPersonalWeibo" data="sendMultimediaPersonalWeibo" name="weibo" target= "right" >1)发送个人微博 </a></li>
+<!--                 <li><a href="sendMultimediaGroupWeibo" data="sendMultimediaGroupWeibo" name="weibo" target= "right" >2)发送集团微博 </a></li>
+                <li><a href="sendMultimediaOnlineCityWeibo" data="sendMultimediaOnlineCityWeibo" name="weibo" target= "right" >3)发送城市微博 </a></li> -->
+        </ul>
+
+        <a href="javascript:;" class="list-group-item apiGather" data="dfsapi">G) dfs文件存储</a>
+            <ul class="nav apiList none" name="G) dfs文件存储" style="display: none;">
+            
+            <!--灵云文本转语音-->
+            <li><a href="jtxt2voice"  data="jtxt2voice" name="dfsapi" target= "right" >1) 灵云jtt 文本转amr音频文件</a></li>
+            <li><a href="saveFile"  data="saveFile" name="dfsapi" target= "right" >2) 上传文件</a></li>
+        
+        </ul>
+
+        <a href="javascript:;" class="list-group-item apiGather" data="applicationapi">H) 设备应用</a>
+            <ul class="nav apiList none" name="H) 设备应用" style="display: none;">
+                <li><a href="setDeviceChannelInfo" data="setDeviceChannelInfo" name="applicationapi" target= "right" >1) 设置设备默认频道信息</a></li>
+                <li><a href="fetchDeviceChannelInfo" data="fetchDeviceChannelInfo" name="applicationapi" target= "right" >2) 查询设备默认频道信息</a></li>
+        </ul>
+        
+        <a href="javascript:;" class="list-group-item apiGather" data="applicationapi">I) 申请appKey</a>
+            <ul class="nav apiList none" name="I) 申请appKey" style="display: none;">
+                <li><a href="addCustomAccount" data="addCustomAccount" name="applicationapi" target= "right" >1) 创建道客账户</a></li>
+                <li><a href="registerIdentityInfo" data="registerIdentityInfo" name="applicationapi" target= "right" >2) 第三方开发者注册身份信息</a></li>
+                <li><a href="manageDeveloperStatus" data="manageDeveloperStatus" name="applicationapi" target= "right" >3) 后台审核开发者信息</a></li>
+                <li><a href="addUserAppkeyInfo" data="addUserAppkeyInfo" name="applicationapi" target= "right" >4) 添加appKey</a></li>
+                <li><a href="manageAppStatus" data="manageAppStatus" name="applicationapi" target= "right" >5) 审核第三方appKey状态</a></li>
+                
+        </ul>
+        
+
+
+</div>
+
+<script src="../static/jquery.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/docs.js"></script>
+
+  </body>
+</html>
+
+

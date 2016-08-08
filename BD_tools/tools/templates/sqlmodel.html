@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta name="description" content="json,格式化,高亮">
+<meta name="keywords" content="json,格式化,高亮">
+<script src="../static/c.js" type="text/javascript"></script>
+</head> 
+
+<style type="text/css">
+table.imagetable {
+  font-family: verdana,arial,sans-serif;
+  font-size:11px;
+  color:#333333;
+  border-width: 1px;
+  border-color: #999999;
+  border-collapse: collapse;
+}
+table.imagetable th {
+  background:#b5cfd2 url('cell_blue.jpg');
+  border-width: 4px;
+  padding: 5px;
+  border-style: solid;
+  border-color: #999999;
+}
+table.imagetable td {
+  background:#dcddc0 url('cell_yellow.jpg');
+  border-width: 3px;
+  padding: 5px;
+  border-style: solid;
+  border-color: #999999;
+}
+</style>
+
+ {% extends "apibase.html" %}
+
+ {% block content %}
+<table class="table" width = "100%" style="table-layout:fixed;">
+  <thead>
+    <tr>
+      <th>名称 :  {{ api_name }} </th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+      <td>
+        <form class="form-horizontal" role="form" action = {{ api_action }} method="post">
+        <table width = "800">
+        {%   for field in form %}
+          <tr>
+            <td width="100">   
+                {{ field.label }} 
+            </td>
+            <td>
+                {{ field }} 
+          </tr>
+        {%  endfor %}
+        </table>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="submit" class="btn example-btn" value="查询">
+        </form>
+      </td>
+    </tr>
+
+    </tr>
+    <tr>
+      <td>
+        <div>
+          <br>
+          <div id="Canvas" class="Canvas"></div>
+
+    <tr>
+      <td style="word-wrap:break-word;">
+        <table class="imagetable" ><tr>  
+
+      {% if useType == 1 %}
+            <tr>
+            <th class="text" style=" text-align:center;">&nbsp;&nbsp;生产的设备数&nbsp;&nbsp;</th>
+            <th class="text" style=" text-align:center;">&nbsp;&nbsp;验证码&nbsp;&nbsp;</th>
+            </tr>
+            
+            <tr>     
+                  <th class="text" style=" text-align:center;">&nbsp;&nbsp;{{ object_data.successcounts }}&nbsp;&nbsp;</th>
+                  <th class="text" style=" text-align:center;">&nbsp;&nbsp;{{ object_data.verificationCode }}&nbsp;&nbsp;</th>
+            </tr>
+
+            <tr>
+                  <th class="text" style=" text-align:center;">&nbsp;&nbsp;设备串号&nbsp;&nbsp;</th>
+                  <th class="text" style=" text-align:center;">&nbsp;&nbsp;押金密码&nbsp;&nbsp;</th>
+            </tr>
+           
+            {%   for field in object_data.imei %}<tr>  
+                  <th class="text" style=" text-align:center;">&nbsp;&nbsp;{{ field.imei }}&nbsp;&nbsp;</th>
+                  <th class="text" style=" text-align:center;">&nbsp;&nbsp;{{ field.password }}&nbsp;&nbsp;</th>
+            {%  endfor %}</tr>
+
+      {% elif useType == 2 %}      
+            <tr>
+            <th class="text" style=" text-align:center;">&nbsp;&nbsp;查询设备成功数&nbsp;&nbsp;</th>
+            <th class="text" style=" text-align:center;">&nbsp;&nbsp;查询设备失败数&nbsp;&nbsp;</th>
+            </tr>
+            
+            <tr>     
+                  <td class="text" style=" text-align:center;">&nbsp;&nbsp;{{ object_data.successfulCount }}&nbsp;&nbsp;</td>
+                  <td class="text" style=" text-align:center;">&nbsp;&nbsp;{{ object_data.failedCount }}&nbsp;&nbsp;</td>
+            </tr>
+
+            <tr>
+            {%   for field in table_date %}
+                  <th class="text" style=" text-align:center;">&nbsp;&nbsp;{{ field }}&nbsp;&nbsp;</th>
+            {%  endfor %}
+            </tr>
+
+            {%   for item in object_data.successAccountID %} <tr>
+                  <!--td>&nbsp;&nbsp;{{ item.imei }}&nbsp;&nbsp;</td>
+                  <td class="text" style=" text-align:center;">&nbsp;&nbsp;{{ item.isActive }}&nbsp;&nbsp;</td>
+                  <td class="text" style=" text-align:center;">&nbsp;&nbsp;{{ item.isBindAccount }}&nbsp;&nbsp;</td>                            
+                  <td class="text" style=" text-align:center;">&nbsp;&nbsp;{{ item.bindAccount }}&nbsp;&nbsp;</td>
+                  <td class="text" style=" text-align:center;">&nbsp;&nbsp;{{ item.bonusType }}&nbsp;&nbsp;</td>
+                  <td class="text" style=" text-align:center;">&nbsp;&nbsp;{{ item.rewardsMaxAmount }}&nbsp;&nbsp;</td> 
+                  <td class="text" style=" text-align:center;">&nbsp;&nbsp;{{ item.fourBonus }}&nbsp;&nbsp;</td> 
+                  <td class="text" style=" text-align:center;">&nbsp;&nbsp;{{ item.threeBonus }}&nbsp;&nbsp;</td> 
+                  <td class="text" style=" text-align:center;">&nbsp;&nbsp;{{ item.twoBonus }}&nbsp;&nbsp;</td>
+                  <td class="text" style=" text-align:center;">&nbsp;&nbsp;{{ item.oneBonus }}&nbsp;&nbsp;</td>
+                  <td class="text" style=" text-align:center;">&nbsp;&nbsp;{{ item.fourDeposit }}&nbsp;&nbsp;</td>
+                  <td class="text" style=" text-align:center;">&nbsp;&nbsp;{{ item.threeDeposit }}&nbsp;&nbsp;</td> 
+                  <td class="text" style=" text-align:center;">&nbsp;&nbsp;{{ item.twoDeposit }}&nbsp;&nbsp;</td>
+                  <td class="text" style=" text-align:center;">&nbsp;&nbsp;{{ item.oneDeposit }}&nbsp;&nbsp;</td>
+                  <td class="text" style=" text-align:center;">&nbsp;&nbsp;{{ item.balance }}&nbsp;&nbsp;</td>
+                  <td class="text" style=" text-align:center;">&nbsp;&nbsp;{{ item.bonusBusinessReturnMonth }}&nbsp;&nbsp;</td>       
+                  <td class="text" style=" text-align:center;">&nbsp;&nbsp;{{ item.depositType }}&nbsp;&nbsp;</td>
+                  <td class="text" style=" text-align:center;">&nbsp;&nbsp;{{ item.frozenDepositAmount }}&nbsp;&nbsp;</td>
+                  <td class="text" style=" text-align:center;">&nbsp;&nbsp;{{ item.isBuyOutDevice }}&nbsp;&nbsp;</td>
+                  <td class="text" style=" text-align:center;">&nbsp;&nbsp;{{ item.isDepositDevice }}&nbsp;&nbsp;</td>
+                  <td class="text" style=" text-align:center;">&nbsp;&nbsp;{{ item.isBackupDevice }}&nbsp;&nbsp;</td>
+                  <td class="text" style=" text-align:center;">&nbsp;&nbsp;{{ item.aleadyPowerOnTime }}&nbsp;&nbsp;</td>
+                  <td class="text" style=" text-align:center;">&nbsp;&nbsp;{{ item.isExchanged }}&nbsp;&nbsp;</td>
+                  <td class="text" style=" text-align:center;">&nbsp;&nbsp;{{ item.imeiBeforeExchanged }}&nbsp;&nbsp;</td>
+                  <td class="text" style=" text-align:center;">&nbsp;&nbsp;{{ item.imeiAfterExchanged }}&nbsp;&nbsp;</td>
+                  <td class="text" style=" text-align:center;">&nbsp;&nbsp;{{ item.remark }}&nbsp;&nbsp;</td-->
+            {%  endfor %}
+
+            <tr>
+              <th class="text" style=" text-align:center;">&nbsp;&nbsp;查询设备失败列表&nbsp;&nbsp;</th>
+            </tr>
+
+            <tr>
+            {%   for field in object_data.failedAccountID %}                   
+                  <td>&nbsp;&nbsp;{{ field }}&nbsp;&nbsp;</td>
+            {%  endfor %}
+            </tr>         
+
+      {% else %}<tr>
+
+            {%   for field in table_date %}
+                  <th class="text" style=" text-align:center;">&nbsp;&nbsp;{{ field }}&nbsp;&nbsp;</th>
+            {%  endfor %}</tr>
+
+            {%   for field in request_msg %} <tr>
+                {%   for item in field %}
+                    <td class="text" style=" text-align:center;">&nbsp;&nbsp;{{ item }}&nbsp;&nbsp;</td>
+                {%  endfor %}</tr>
+            {%  endfor %}
+
+      {%  endif %}
+        </table>
+      </td>
+    </tr>
+
+
+        </div>
+      </td>
+    </tr>
+
+
+    </body>
+</html>
+
+  <script type="text/javascript">
+    Process();
+  </script>
+
+{% endblock %}
